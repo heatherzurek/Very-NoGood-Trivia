@@ -3,6 +3,8 @@ import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
 import { buildAnswers, checkAnswer } from './functions';
 
+let score = 0;
+let questionNumber;
 $(document).ready(function(){
   let correctAnswer = "";
   getSwansonQuote().then((response) => {
@@ -21,6 +23,11 @@ $(document).ready(function(){
       $('#answers').append('<li data-id="' + counter  + '" class="answerBox">' + answer.replace(/&quot;/g,'"').replace(/&#039;/g, "'") + '</li>');
       counter++;
     });
+    
+    // localStorage.setItem("questionNumber", (stored + 1));
+    localStorage.questionNumber = Number(localStorage.questionNumber) + 1;
+
+    $("#total").text(localStorage.getItem("questionNumber"));
   });
 
   $("#answers").on("click", "li", function(event) {
@@ -31,6 +38,13 @@ $(document).ready(function(){
 
     let isCorrect  = checkAnswer(userAnswer, correctAnswer);
     console.log(isCorrect);
+    if(isCorrect) {
+      score+=1;
+      localStorage.setItem("score", score);
+    }
   });
+
+
 });
+
 
