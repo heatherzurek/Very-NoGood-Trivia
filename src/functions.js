@@ -7,3 +7,4 @@ export function buildAnswers(string, array){
 export function checkAnswer(userAnswer, correctAnswer){
   return (userAnswer == correctAnswer);
 }
+
