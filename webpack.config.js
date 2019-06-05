@@ -31,6 +31,10 @@ module.exports = {
         exclude: [/node_modules/,/spec/],
         loader: "eslint-loader"
       },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
+      }
     ]
   },
   devtool: 'eval-source-map',

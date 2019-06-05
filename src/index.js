@@ -2,11 +2,19 @@ import $ from 'jquery';
 import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
 import { buildAnswers, checkAnswer } from './functions';
+import Ron1 from './../src/img/Ron1.png';
 
 let score = 0;
 let questionNumber;
+
+const myRon = new Image();
+myRon.src = Ron1;
+
 $(document).ready(function(){
   let correctAnswer = "";
+
+  $('#host').prepend(myRon);
+
   getSwansonQuote().then((response) => {
     $('#swansonQuotes').append(response + " Ok.  Next Question.");
   });
