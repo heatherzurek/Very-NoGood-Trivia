@@ -60,7 +60,7 @@ function attatchListeners(){
       sessionStorage.setItem('score', (oldScore + 1));
     }
     displayPlayerScore();
-    displayResponse(isCorrect);
+    displayResponse(isCorrect, correctAnswer);
   });
 
   //next question
