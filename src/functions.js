@@ -25,3 +25,12 @@ export function displayAnswers(responseObj) {
 export function displayQuestion(responseObj){
   $('#host-question').text(responseObj["results"][0]["question"].replace(/&quot;/g,'"').replace(/&#039;/g, "'"));
 }
+
+export function clearScores(){
+  sessionStorage.setItem('score', 0);
+  displayPlayerScore();
+}
+
+export function displayPlayerScore(){
+  $("#score").text(" " + sessionStorage['score']);
+}
