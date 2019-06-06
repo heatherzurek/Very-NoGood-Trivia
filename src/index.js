@@ -30,8 +30,10 @@ $(document).ready(function(){
 });
 
 function attatchListeners(){
+
   //clear scores
   $('#clear').on('click', ()=> clearScores());
+
   //listen for presses on answer divs
   $("#answers").on("click", "li", function(event) {
     event.preventDefault();
