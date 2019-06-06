@@ -37,5 +37,15 @@ export function displayPlayerScore(){
 
 export function applyAnswer(isCorrect, eventObj) {
   isCorrect ? $(eventObj).addClass('correctAnswer') : $(eventObj).addClass('wrongAnswer');
+  $('li').addClass('unClickable');
+}
+
+export function displayResponse(isCorrect) {
+  if(isCorrect){
+    $('#host').append('<p class="response">You are correct.  Well played.</p>');
+  } else {
+    $('#host').append('<p class="response">You are very wrong.</p>');
+  }
+  $('#host').append('<button id="nextButton">Next Question</button>');
 }
 
