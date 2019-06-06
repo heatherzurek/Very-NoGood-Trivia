@@ -35,3 +35,7 @@ export function displayPlayerScore(){
   $("#score").text(" " + sessionStorage['score']);
 }
 
+export function applyAnswer(isCorrect, eventObj) {
+  isCorrect ? $(eventObj).addClass('correctAnswer').append("<span class=''>Correct</span>") : $(eventObj).addClass('wrongAnswer').append("<span class=''>Wrong</span>");
+}
+

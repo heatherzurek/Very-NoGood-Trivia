@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
-import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore } from './functions';
+import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore, applyAnswer } from './functions';
 import Ron1 from './../src/img/Ron1.png';
 
 if(!sessionStorage.getItem('score')) {
@@ -30,15 +30,19 @@ $(document).ready(function(){
 });
 
 function attatchListeners(){
+
   //clear scores
   $('#clear').on('click', ()=> clearScores());
-  //listen for presses on answer divs
+
+  //listen for clicks on answers
   $("#answers").on("click", "li", function(event) {
     event.preventDefault();
     // let strId = this.getAttribute("data-id");
     let userAnswer = $(this).text();
     let isCorrect  = checkAnswer(userAnswer, correctAnswer);
-    console.log(isCorrect);
+    // console.log(isCorrect);
+
+    applyAnswer(isCorrect, this);
 
     if(isCorrect) {
       let oldScore = Number(sessionStorage.getItem('score'));
