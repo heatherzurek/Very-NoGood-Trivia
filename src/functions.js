@@ -36,6 +36,6 @@ export function displayPlayerScore(){
 }
 
 export function applyAnswer(isCorrect, eventObj) {
-  isCorrect ? $(eventObj).addClass('correctAnswer').append("<span class=''>Correct</span>") : $(eventObj).addClass('wrongAnswer').append("<span class=''>Wrong</span>");
+  isCorrect ? $(eventObj).addClass('correctAnswer') : $(eventObj).addClass('wrongAnswer');
 }
 
