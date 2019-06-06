@@ -1,14 +1,20 @@
 import $ from 'jquery';
 import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
-import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore, applyAnswer, displayResponse } from './functions';
+import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore, applyAnswer, displayResponse, buildPlayerForm, createPlayerObjects } from './functions';
 import Ron1 from './../src/img/Ron1.png';
+import { Game } from './objects';
 
 if(!sessionStorage.getItem('score')) {
   sessionStorage.setItem('score', 0);
 }
 if(!sessionStorage.getItem('newGame')) {
   sessionStorage.setItem('newGame', false);
+}
+
+if(!sessionStorage.getItem('game')) {
+  // let newGame = new Game();
+  sessionStorage.setItem('game', new Game());
 }
 
 const myRon = new Image();
@@ -60,5 +66,24 @@ function attatchListeners(){
   //next question
   $('#host').on("click", "button", ()=> window.location.reload());
 
+  //get player count
+  $('#submitPlayerCount').on('click', (e)=>{
+    e.preventDefault();
+    let userValue = $('#playerCount').val();
+    sessionStorage.setItem('playerCount', userValue);
+    buildPlayerForm();
+  });
+
+  //create player objects in sessionStorage
+  $('#preGame').on('click', '#playerInfoSubmit', ()=>{
+    let players = (createPlayerObjects());
+    console.log(players);
+    
+    sessionStorage.setItem('game', JSON.stringify(players));
+    console.log(sessionStorage.getItem('game'));
+    console.log(JSON.parse(sessionStorage.getItem('game'))[0].name);
+  });
+
 }
 
+c

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { Player } from './objects';
 
 export function spliceAnswers(string, array){
   let index = Math.floor(Math.random() * 3);
@@ -49,3 +50,28 @@ export function displayResponse(isCorrect) {
   $('#host').append('<button id="nextButton">Next Question</button>');
 }
 
+export function getPlayerCount() {
+  return sessionStorage.getItem('playerCount');
+}
+
+export function buildPlayerForm(){
+  let count = getPlayerCount();
+  $('#preGame').append('<form id="playerInfoForm"></form>');
+  for(let i = 1; i <= count; i++) {
+    $('#playerInfoForm').append('<label for="playerNameInput">Player ' + i + ' Name</label>',
+      '<input type="text" name="playerNameInput" id="player' + i + '" name.>');
+  }
+  $('#preGame').append('<button id="playerInfoSubmit">Let\'s Play</button>');
+}
+
+export function createPlayerObjects() {
+  let count = getPlayerCount();
+  let players = [];
+  for(let i = 0; i<= count -1; i++) {
+    let id = "#player"+(i+1);
+    let name = $(id).val();
+    let player = new Player(name);
+    players.push(player);
+  }
+  return players;
+}

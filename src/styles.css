@@ -11,7 +11,6 @@ body {
   cursor: pointer;
 }
 
-
 .correctAnswer {
   box-shadow: 2px 2px 10px 10px green;
 }
@@ -62,4 +61,9 @@ li p {
 
 .unClickable {
   pointer-events: none;
+}
+
+#playerInfoForm {
+  display: flex;
+  flex-direction: column;
 }
