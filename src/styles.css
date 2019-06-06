@@ -59,3 +59,7 @@ li p {
 #questions {
   font-size: 30px;
 }
+
+.unClickable {
+  pointer-events: none;
+}

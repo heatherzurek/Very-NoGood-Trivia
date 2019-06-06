@@ -1,12 +1,16 @@
 import $ from 'jquery';
 import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
-import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore, applyAnswer } from './functions';
+import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore, applyAnswer, displayResponse } from './functions';
 import Ron1 from './../src/img/Ron1.png';
 
 if(!sessionStorage.getItem('score')) {
   sessionStorage.setItem('score', 0);
 }
+if(!sessionStorage.getItem('newGame')) {
+  sessionStorage.setItem('newGame', false);
+}
+
 const myRon = new Image();
 myRon.src = Ron1;
 let correctAnswer;
@@ -48,9 +52,13 @@ function attatchListeners(){
     if(isCorrect) {
       let oldScore = Number(sessionStorage.getItem('score'));
       sessionStorage.setItem('score', (oldScore + 1));
-      displayPlayerScore();
     }
+    displayPlayerScore();
+    displayResponse(isCorrect);
   });
+
+  //next question
+  $('#host').on("click", "button", ()=> window.location.reload());
 
 }
 
