@@ -38,17 +38,17 @@ li {
   list-style: none;
   display: inline;
   margin: 10px;
-}
-
-li p {
-  font-size: 25px;
   border: 1px solid black ;
   background-color: #FFFFFF;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 9px;
+}
+
+li p {
+  font-size: 25px;
+  /* padding: 7px; */
 }
 
 #answers {
