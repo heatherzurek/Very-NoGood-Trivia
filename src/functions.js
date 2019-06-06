@@ -40,11 +40,16 @@ export function applyAnswer(isCorrect, eventObj) {
   $('li').addClass('unClickable');
 }
 
-export function displayResponse(isCorrect) {
+export function displayResponse(isCorrect, correctAnswer) {
+  let answer= correctAnswer;
+  let correct = "You are correct. Well played.";
+  let wrong = "You are very, very wrong.";
   if(isCorrect){
-    $('#host').append('<p class="response">You are correct.  Well played.</p>');
+    $('#host-text').text(correct);
+    // $('#host').append('<p class="response">You are correct.  Well played.</p>');
   } else {
-    $('#host').append('<p class="response">You are very wrong.</p>');
+    $('#host-text').text(wrong + "The correct answer is, " + answer + ". I knew that.");
+    // $('#host').append('<p class="response">You are very wrong.</p>');
   }
   $('#host').append('<button id="nextButton">Next Question</button>');
 }
