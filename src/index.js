@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import './styles.css';
 import { getSwansonQuote, getTriva } from './api-calls';
-import { checkAnswer, displayAnswers, displayQuestion } from './functions';
+import { clearScores,checkAnswer, displayAnswers, displayQuestion, displayPlayerScore } from './functions';
 import Ron1 from './../src/img/Ron1.png';
 
 if(!sessionStorage.getItem('score')) {
@@ -20,30 +20,25 @@ $(document).ready(function(){
   });
 
   getTriva().then(response => {
-
     displayQuestion(response);
     correctAnswer = displayAnswers(response);
-
-
-    // localStorage.setItem("questionNumber", (stored + 1));
     localStorage.questionNumber = Number(localStorage.questionNumber) + 1;
-
   });
-  
+
   $("#answers").on("click", "li", function(event) {
     event.preventDefault();
     let userAnswer = $(this).text();
     // let strId = this.getAttribute("data-id");
     // console.log(str, strId, correctAnswer);
-    
+
+    $('#clear').on('click', ()=> clearScores());
+
     let isCorrect  = checkAnswer(userAnswer, correctAnswer);
     console.log(isCorrect);
     if(isCorrect) {
-      // sessionStorage.clear();
       let oldScore = Number(sessionStorage.getItem('score'));
-      console.log(oldScore);
       sessionStorage.setItem('score', (oldScore + 1));
-      $("#playerScore").text(sessionStorage.getItem('score'));
+      displayPlayerScore();
     }
   });
 
