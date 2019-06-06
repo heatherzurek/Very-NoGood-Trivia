@@ -17,28 +17,28 @@
   <section id="host">
     <div id="host-text"></div>
     <div id="host-question"></div>
+    <ul id="answers"></ul>
   </section>
+  <hr>
   <section id="players">
     <div class="player">
       <div class="player-img"></div>
       <div class="player-score">
-        <p>Score:</p>
+        <p>Score:<span id="score"></span></p>
       </div>
     </div>
   </section>
 
   <output id="swansonQuotes"></output>
-  <hr>
   <br>
  
   <output id="questions"></output>
   
-  <ul id="answers"></ul>
-  <br><br>
   <output id="total"></output>
   <output id="totalScore"></output>
   <br>
   <button value="Refresh Page" onClick="window.location.reload();">Next Question</button>
+  <button id="clear">Clear Player Score</button>
   
   </body>
 </html>
