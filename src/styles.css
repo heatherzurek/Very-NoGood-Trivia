@@ -1,6 +1,8 @@
 body {
   background-color: orange;
   font-family: sans-serif;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 #host img {
@@ -26,7 +28,7 @@ li span {
 
 header {
   background-color: #ffffffad;
-  font-size: 35px;
+  font-size: 40px;
 }
 
 h1 {
@@ -37,29 +39,92 @@ h1 {
 li {
   list-style: none;
   display: inline;
-  margin: 10px;
-}
-
-li p {
-  font-size: 25px;
+  margin: 20px;
   border: 1px solid black ;
   background-color: #FFFFFF;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 9px;
+  padding: 1px 15px;
 }
 
-#answers {
-  margin-top: 400px;
-  margin-left: 85px;
+li p {
+  font-size: 18px;
 }
 
-#questions {
+.triviaQs {
+  margin-top: 250px;
+  margin-left: 120px;
+  text-align: center;
+
+}
+
+#host-text {
   font-size: 30px;
 }
+
 
 .unClickable {
   pointer-events: none;
 }
+
+#host-question {
+  font-size: 35px;
+}
+
+
+/* text bubble */
+.talk-bubble {
+  float: right;
+	/* margin: 40px; */
+  display: inline-block;
+  position: relative;
+	/* width: 200px; */
+  /* height: auto; */
+  max-width: 800px;
+  min-height: 100px;
+  /* max-height: 400px; */
+	background-color: lightyellow;
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+
+}
+
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -40px;
+  top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: auto;
+	right: -20px;
+  top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: lightyellow transparent transparent lightyellow;
+}
+
+.talktext{
+  padding: 1em;
+	text-align: left;
+  line-height: 2em;
+}
+
