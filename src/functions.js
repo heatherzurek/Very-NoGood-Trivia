@@ -16,7 +16,7 @@ export function displayAnswers(responseObj) {
   let answers = spliceAnswers(correctAnswer, incorrectAnswers);
   let counter = 1;
   answers.forEach(answer => {
-    $('#answers').append('<li data-id="' + counter  + '" class="answerBox">' + answer.replace(/&quot;/g,'"').replace(/&#039;/g, "'") + '</li>');
+    $('#answers').append('<li data-id="' + counter  + '" class="answerBox"><p>' + answer.replace(/&quot;/g,'"').replace(/&#039;/g, "'") + '</p></l1>');
     counter++;
   });
   return correctAnswer;
