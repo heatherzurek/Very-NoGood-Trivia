@@ -9,11 +9,13 @@ if(!sessionStorage.getItem('score')) {
 }
 const myRon = new Image();
 myRon.src = Ron1;
+let correctAnswer;
 
 $(document).ready(function(){
-  let correctAnswer = "";
 
   $('#host').prepend(myRon);
+
+  attatchListeners();
 
   getSwansonQuote().then((response) => {
     $('#host-text').append(response + " Ok.  Next Question.");
@@ -25,16 +27,19 @@ $(document).ready(function(){
     localStorage.questionNumber = Number(localStorage.questionNumber) + 1;
   });
 
+});
+
+function attatchListeners(){
+  //clear scores
+  $('#clear').on('click', ()=> clearScores());
+  //listen for presses on answer divs
   $("#answers").on("click", "li", function(event) {
     event.preventDefault();
-    let userAnswer = $(this).text();
     // let strId = this.getAttribute("data-id");
-    // console.log(str, strId, correctAnswer);
-
-    $('#clear').on('click', ()=> clearScores());
-
+    let userAnswer = $(this).text();
     let isCorrect  = checkAnswer(userAnswer, correctAnswer);
     console.log(isCorrect);
+
     if(isCorrect) {
       let oldScore = Number(sessionStorage.getItem('score'));
       sessionStorage.setItem('score', (oldScore + 1));
@@ -42,7 +47,5 @@ $(document).ready(function(){
     }
   });
 
-
-});
-
+}
 

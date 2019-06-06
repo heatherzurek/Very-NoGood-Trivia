@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export function buildAnswers(string, array){
+export function spliceAnswers(string, array){
   let index = Math.floor(Math.random() * 3);
   array.splice(index, 0, string);
   return array;
@@ -13,7 +13,7 @@ export function checkAnswer(userAnswer, correctAnswer){
 export function displayAnswers(responseObj) {
   let incorrectAnswers = responseObj["results"][0]["incorrect_answers"];
   let correctAnswer = responseObj['results'][0]["correct_answer"];
-  let answers = buildAnswers(correctAnswer, incorrectAnswers);
+  let answers = spliceAnswers(correctAnswer, incorrectAnswers);
   let counter = 1;
   answers.forEach(answer => {
     $('#answers').append('<li data-id="' + counter  + '" class="answerBox">' + answer.replace(/&quot;/g,'"').replace(/&#039;/g, "'") + '</li>');
@@ -34,3 +34,4 @@ export function clearScores(){
 export function displayPlayerScore(){
   $("#score").text(" " + sessionStorage['score']);
 }
+

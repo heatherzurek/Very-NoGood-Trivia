@@ -5,3 +5,7 @@ body {
 #host img {
   float: right;
 }
+
+#answers li:hover {
+  cursor: pointer;
+}
